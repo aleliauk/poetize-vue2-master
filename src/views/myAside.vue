@@ -53,7 +53,7 @@
         <i class="el-icon-star-off" style="margin-right: 2px;"></i>朋友圈
       </a>
       <div class="blog-info-icons">
-        <span title="微信">
+        <span title="微信"  @click="toNav('https://file.aleliauk.top/files/Eliauk11678450838394146.jpg')">
           <svg t="1687029204939" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
             p-id="7150" width="25" height="25">
             <path
@@ -64,7 +64,7 @@
               fill="#00C800" p-id="7152"></path>
           </svg>
         </span>
-        <span title="QQ">
+        <span title="QQ" @click="toNav('https://res.abeim.cn/api/qq/?qq=1906216170')">
           <svg t="1687029220753" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
             p-id="7361" width="25" height="25">
             <path
@@ -81,7 +81,7 @@
               fill="#6BC2FC" p-id="7365"></path>
           </svg>
         </span>
-        <span title="QQ邮箱">
+        <span title="QQ邮箱"  @click="toNav('mailto:1906216170@qq.com')">
           <svg t="1687029232039" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
             p-id="7574" width="25" height="25">
             <path
@@ -110,7 +110,7 @@
               fill="#2974CE" p-id="7582"></path>
           </svg>
         </span>
-        <span title="Github">
+        <span title="Github"  @click="toNav('https://github.com/aleliauk')">
           <svg t="1687028911142" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
             p-id="6849" width="25" height="25">
             <path
@@ -331,6 +331,10 @@ export default {
     this.getAdmire();
   },
   methods: {
+    toNav (url) {
+      console.log(1111);
+      window.open(url, "_blank")
+    },
     selectSort (sort) {
       this.$emit("selectSort", sort);
     },
@@ -514,7 +518,7 @@ export default {
 }
 
 .blog-info-icons {
-  z-index: 11;
+  z-index: 1000;
 }
 
 .blog-info-icons span {

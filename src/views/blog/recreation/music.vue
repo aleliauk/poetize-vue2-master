@@ -93,8 +93,8 @@
               <div class="funny-item-introduction">歌手</div>
               <div class="funny-item-remark">专辑</div>
             </div>
-            <div class="funny-item funny-item-content" v-for="(funny, i) in item.data" :key="i"
-              @click="playSound(funny.url)">
+            <div class="funny-item funny-item-content" :title="funny.title + '-' + funny.introduction"
+              v-for="(funny, i) in item.data" :key="i" @click="playSound(funny.url)">
               <div class="funny-item-cover myLeft">
                 <el-image :src="funny.cover" fit="cover" v-animate="'my-animation-imgblur'"></el-image>
               </div>
@@ -184,8 +184,8 @@ export default {
         });
     },
 
-    async listFunny () {
-      await this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.pagination)
+    listFunny () {
+      this.$http.post(this.$constant.baseURL + "/webInfo/listResourcePath", this.pagination)
         .then((res) => {
           if (!this.$common.isEmpty(res.data) && !this.$common.isEmpty(res.data.records)) {
             this.funnys.forEach(funny => {
@@ -200,8 +200,8 @@ export default {
                 //   });
                 // })
                 funny.data = res.data.records
-                this.$forceUpdate();
               }
+              this.$forceUpdate();
             });
           }
           this.pagination.classify = "";
