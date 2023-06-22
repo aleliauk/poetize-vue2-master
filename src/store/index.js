@@ -33,7 +33,7 @@ export default new Vuex.Store({
       {
         id: 2,
         title: "分类",
-        number: null,
+        number: null || 0,
         icon: "el-icon-notebook-2",
         bgc: "#38acf5",
       },
