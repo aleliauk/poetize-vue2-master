@@ -39,6 +39,7 @@ export default {
   friendLetterBiLi: "https://file.aleliauk.top/files/letter-3.jpg",
   friendLetterTop: "https://file.aleliauk.top/files/letter-4.jpg",
 
+  // 标签颜色
   before_color_list: [
     "#ff4b2b",
     "#EF794F",
@@ -46,8 +47,23 @@ export default {
     "orange",
     "rgb(131, 123, 199)",
     "#23d5ab",
+    "#2ea0d1",
+    "#d74585",
+    "#958ef2",
+    "#e4cf7d",
+    "#8cc5cf",
+    "#bb543e",
+    "#b837b8",
+    "#7fc2fa",
+    "#4e9630",
+    "#285db1",
+    "#e83f90",
+    "#5bc6ef",
+    "#199894",
+    "#dd8ecc",
   ],
 
+  // 朋友圈卡片颜色
   tree_hole_color: [
     "#a4eac0",
     "#dcffa5",
@@ -57,6 +73,39 @@ export default {
     "#f6dfff",
     "#b4cbff",
     "#b4e0ff",
+  ],
+
+  // 文章描述图标
+  article_icon_list: [
+    "🍈",
+    "🥝",
+    "🍇",
+    "🍉",
+    "🍊",
+    "🍍",
+    "🥭",
+    "🍒",
+    "🍓",
+    "🥬",
+    "🥦",
+    "🌽",
+    "🍑",
+    "🫐",
+    "🥕",
+    "🍄",
+    "🍬",
+    "🧁",
+    "🍰",
+    "🍩",
+    "🥮",
+    "🥗",
+    "🍔",
+    "🍕",
+    "🍟",
+    "🪴",
+    "🌵",
+    "🍁",
+    "🍀",
   ],
 
   // 个人中心(登录/注册)、鬼畜、关于页背景

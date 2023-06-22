@@ -8,6 +8,11 @@
   display: none;
 }
 
+.none {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   color: var(--fontColor);
   font-family: var(--globalFont), serif;
@@ -18,6 +23,39 @@ body {
   font-family: zhuziAwa1n;
   src: url('https://file.aleliauk.top/fonts/zhuziAwa1n.ttf');
   font-display: swap;
+}
+
+.page_main {
+  background: var(--background);
+  padding: 50px 20px;
+}
+
+/* 版心 */
+.contianer {
+  width: 1370px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.border_style {
+  border: 1px solid var(--borderStyle);
+  border-radius: 18px;
+}
+
+@media screen and (max-width: 1410px) {
+  .contianer {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contianer {
+    padding: 20px;
+  }
+
+  .page_main {
+    padding: 20px;
+  }
 }
 
 /* 图片 */
@@ -48,8 +86,8 @@ body {
 
 /* 模块化背景色及透明度 */
 .background-opacity {
-  /*background: var(--background);*/
-  /*opacity: 0.88;*/
+  background: var(--background);
+  opacity: 0.88;
 }
 
 .my-el-image {
@@ -62,6 +100,7 @@ body {
   height: 100%;
 }
 
+
 /* 遮罩 */
 .poem-image::before {
   position: absolute;
@@ -73,7 +112,7 @@ body {
 
 .user-avatar {
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.8s;
   user-select: none;
 }
 
@@ -121,6 +160,12 @@ body {
   align-items: center;
 }
 
+/* 默认左对齐 */
+.myLeft {
+  display: flex;
+  align-items: center;
+}
+
 .transformCenter {
   position: absolute;
   left: 50%;
@@ -154,6 +199,11 @@ body {
 }
 
 .border-radius {
+  border-radius: 10px;
+}
+
+.shadow-box-child {
+  box-shadow: 0 5px 20px -4px var(--borderColor);
   border-radius: 10px;
 }
 
@@ -238,26 +288,26 @@ body {
 /* 导航栏 */
 .toolbarDrawer {
   position: relative;
-  background: var(--toolbar) center center / cover no-repeat;
-  letter-spacing: 3px;
+  background: var(--toolbarBackground);
+  /* letter-spacing: 3px; */
 }
 
 .toolbarDrawer .el-drawer__header {
   font-size: 22px;
-  color: var(--white);
+  color: var(--black);
   text-align: center;
   position: relative;
 }
 
-.toolbarDrawer::before {
+/* .toolbarDrawer::before {
   position: absolute;
   width: 100%;
   height: 100%;
   background-color: var(--maxMask);
   content: "";
-}
+} */
 
-.small-menu {
+/* .small-menu {
   color: var(--white);
   font-size: 20px;
   user-select: none;
@@ -269,7 +319,7 @@ body {
   height: 50px;
   line-height: 50px;
   cursor: pointer;
-}
+} */
 
 .el-tooltip__popper.is-light {
   background: var(--lightGreen);
@@ -287,6 +337,13 @@ body {
   border-style: unset;
 }
 
+/* 卡片样式 */
+.card_style {
+  padding: 25px;
+  margin-top: 20px;
+  border: 1px solid var(--borderStyle);
+  border-radius: 18px;
+}
 
 @media screen and (max-width: 800px) {
   .el-dialog {

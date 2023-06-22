@@ -61,6 +61,7 @@ export default new Vuex.Store({
     ],
     holle: "",
     echatrsList: [],
+    isDark: null,
   },
   getters: {
     articleTotal: (state) => {
@@ -87,8 +88,18 @@ export default new Vuex.Store({
         return [];
       }
     },
+    tagsTotal: (state) => {
+      if (state.sortInfo !== null && state.sortInfo.length !== 0) {
+        return state.sortInfo.reduce((acc, cru) => {
+          return (cru.labels.length += acc);
+        }, 0);
+      }
+    },
   },
   mutations: {
+    updataIsDark(state, isDark) {
+      state.isDark = isDark;
+    },
     changeToolbarStatus(state, toolbarState) {
       state.toolbar = toolbarState;
     },

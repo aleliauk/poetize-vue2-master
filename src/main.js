@@ -20,7 +20,14 @@ import './assets/css/font-awesome.min.css'
 import 'mavon-editor/dist/css/index.css'
 //点击涟漪效果
 import Ripple from 'vue-ripple-directive'
-import {vueBaberrage} from 'vue-baberrage'
+import { vueBaberrage } from 'vue-baberrage'
+
+//引入自定义指令，实现元素到达可视区懒加载效果
+import './utils/zoomln'
+
+// 骨架屏组件
+import Skeleton from '@/views/common/skeleton'
+Vue.component("Skeleton", Skeleton);
 
 Ripple.color = 'var(--rippleColor)'
 Vue.directive("ripple", Ripple)
