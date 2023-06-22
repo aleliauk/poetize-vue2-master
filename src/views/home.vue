@@ -397,7 +397,15 @@ export default {
 
     // 跳转到chatgpt
     goChatGPT () {
-      window.open("https://chatgpt.aleliauk.top", "_blank");
+      if (this.$common.isEmpty(this.$store.state.currentUser)) {
+        this.$message({
+          message: '请先登录！',
+          type: 'error',
+        })
+      } 
+      else {
+        window.open("https://chatgpt.aleliauk.top", "_blank");
+      }
     },
 
     // 跳转到聊天室

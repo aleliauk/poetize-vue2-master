@@ -26,7 +26,7 @@ export default new Vuex.Store({
       {
         id: 1,
         title: "用户",
-        number: null,
+        number: null || 0,
         icon: "el-icon-user",
         bgc: "#fa708b",
       },
@@ -40,21 +40,21 @@ export default new Vuex.Store({
       {
         id: 3,
         title: "文章",
-        number: null,
+        number: null || 0,
         icon: "el-icon-collection",
         bgc: "#EF794F",
       },
       {
         id: 4,
         title: "留言",
-        number: null,
+        number: null || 0,
         icon: "el-icon-chat-dot-square",
         bgc: "#8e6beb",
       },
       {
         id: 5,
         title: "总访问量",
-        number: null,
+        number: null || 0,
         icon: "el-icon-view",
         bgc: "#3fc8a9",
       },
@@ -93,6 +93,8 @@ export default new Vuex.Store({
         return state.sortInfo.reduce((acc, cru) => {
           return (cru.labels.length += acc);
         }, 0);
+      } else {
+        return 0;
       }
     },
   },
