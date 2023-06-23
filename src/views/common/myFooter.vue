@@ -1,12 +1,12 @@
 <template>
   <div class="myFooter-wrap"
        v-show="showFooter">
-    <div class="myFooter">
-      <div class="footer-title">{{$store.state.webInfo.footer}}</div>
-      <div class="icp">&copy; 2022 ~ 2023 {{$store.state.webInfo.webName}}&nbsp;&nbsp;
-        <a href="http://beian.miit.gov.cn/"
-           target="_blank">{{$store.state.webInfo.icpNumber}}</a>
-      </div>
+       <div class="myFooter">
+         <div class="footer-title">{{$store.state.webInfo.footer}}</div>
+         <div class="icp">&copy; 2022 ~ 2023 {{$store.state.webInfo.webName}}&nbsp;&nbsp;
+           <a href="http://beian.miit.gov.cn/"
+              target="_blank">{{$store.state.webInfo.icpNumber}}</a>
+         </div>
     </div>
   </div>
 </template>
@@ -48,7 +48,7 @@
   }
 
   .icp, .icp a {
-    color: var(--maxGreyFont);
+    color: var(--white);
     font-size: 13px;
   }
 

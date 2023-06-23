@@ -234,7 +234,7 @@ export default {
       if (this.addResourcePathDialog === false) {
         return;
       }
-      if (this.$common.isEmpty(this.resourcePath.type)) {
+      if (!['favorites'].includes(this.resourcePath.type)) {
         this.$message({
           message: "请选择资源类型！",
           type: "error"
@@ -372,7 +372,6 @@ export default {
           .then((res) => {
             if (!this.$common.isEmpty(res.data)) {
               this.option = res.data
-              console.log(res.data);
             }
           })
           .catch((error) => {
@@ -381,6 +380,20 @@ export default {
               type: "error"
             });
           });
+      } else if (type === 'favorites') {
+        this.$http
+          .get(this.$constant.baseURL + '/webInfo/listCollect')
+          .then((res) => {
+            if (!this.$common.isEmpty(res.data)) {
+              this.option = Object.keys(res.data).map(key => ({ classify: key }));
+            }
+          })
+          .catch((error) => {
+            this.$message({
+              message: error.message,
+              type: 'error',
+            })
+          })
       }
     }
   }

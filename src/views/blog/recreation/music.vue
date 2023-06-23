@@ -67,7 +67,8 @@
         <div v-if="$common.mobile() || mobile">
           <div style="cursor: default;" v-for="(item, index) in funnys" :key="index">
             <div class="funny-mobile-title">{{ item.classify }} - {{ item.count }}</div>
-            <div class="funny-mobile-item" v-for="(funny, i) in item.data" :key="i" @click="playSound(funny.url)">
+            <div class="funny-mobile-item" :class="{ active: currentIndex === index }" v-for="(funny, index) in item.data"
+              :key="index" @click="playSound(funny.url, index)">
               <div class="funny-mobile-item-cover myLeft">
                 <el-image :src="funny.cover" fit="cover" v-animate="'my-animation-imgblur'"></el-image>
               </div>
@@ -93,8 +94,9 @@
               <div class="funny-item-introduction">歌手</div>
               <div class="funny-item-remark">专辑</div>
             </div>
-            <div class="funny-item funny-item-content" :title="funny.title + '-' + funny.introduction"
-              v-for="(funny, i) in item.data" :key="i" @click="playSound(funny.url)">
+            <div class="funny-item funny-item-content" :class="{ active: currentIndex === index }"
+              :title="funny.title + '-' + funny.introduction" v-for="(funny, index) in item.data" :key="index"
+              @dblclick="playSound(funny.url, index)">
               <div class="funny-item-cover myLeft">
                 <el-image :src="funny.cover" fit="cover" v-animate="'my-animation-imgblur'"></el-image>
               </div>
@@ -144,7 +146,8 @@ export default {
         cover: "",
         url: ""
       },
-      mobile: false
+      mobile: false,
+      currentIndex: -1
     }
   },
 
@@ -167,6 +170,13 @@ export default {
     })
   },
 
+  beforeDestroy () {
+    if (this.audio) {
+      this.audio.pause();
+      this.audio = null;
+    }
+  },
+
   mounted () { },
 
   methods: {
@@ -174,7 +184,10 @@ export default {
       this.$http.get(this.$constant.baseURL + "/webInfo/listFunny")
         .then((res) => {
           this.funnys = res.data;
-          this.changeFunny(this.funnys[0].classify);
+          if (!this.$common.isEmpty(res.data)) {
+            this.changeFunny(this.funnys[0].classify);
+          }
+          console.log(this.funnys);
         })
         .catch((error) => {
           this.$message({
@@ -221,7 +234,8 @@ export default {
         }
       });
     },
-    playSound (src) {
+    playSound (src, index) {
+      this.currentIndex = index;
       if (this.audio != null) {
         if (this.audio.src === src) {
           if (this.audio.paused) {
@@ -239,7 +253,7 @@ export default {
         this.audio = new Audio(src);
         this.audio.play();
       }
-    }
+    },
   }
 }
 </script>
@@ -250,8 +264,12 @@ export default {
   /* margin-left: 8px; */
   margin-bottom: 20px;
   color: var(--fontColor);
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
+}
+
+.funny-mobile-title {
+  font-size: 22px;
 }
 
 .funny-item,
@@ -261,8 +279,12 @@ export default {
   padding: 8px;
   margin: 0 -8px;
   height: 60px;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 5px;
+}
+
+.funny-mobile-item {
+  font-size: 14px;
 }
 
 .funny-item>div,
@@ -321,8 +343,6 @@ export default {
   border-radius: 5px;
 }
 
-
-
 .funny-mobile-item-content {
   font-size: 12px;
 }
@@ -337,5 +357,9 @@ export default {
   transform: translateX(-4px) scale(0.8);
   color: #d1b777;
   border: 2px solid #d1b777;
+}
+
+.active {
+  color: #31c27c
 }
 </style>

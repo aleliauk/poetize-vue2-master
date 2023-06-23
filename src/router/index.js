@@ -25,7 +25,7 @@ const routes = [
       {
         path: "/article",
         name: "article",
-        component: () => import("../views/article"),
+        component: () => import("@/views/article.vue"),
       },
       // 文章——归档
       {
@@ -154,14 +154,14 @@ const routes = [
       {
         path: "/sort",
         name: "sort",
-        component: () => import("../views/sort.vue"),
+        component: () => import("@/views/sort.vue"),
       },
 
       // 个人中心
       {
         path: "/user",
         name: "user",
-        component: () => import("../views/user.vue"),
+        component: () => import("@/views/user.vue"),
       },
       // {
       //   path: "/letter",
@@ -175,62 +175,62 @@ const routes = [
     path: "/admin",
     redirect: "/main",
     meta: { requiresAuth: true },
-    component: () => import("../views/admin/admin"),
+    component: () => import("@/views/admin/admin"),
     children: [
       {
         path: "/main",
         name: "main",
-        component: () => import("../views/admin/main"),
+        component: () => import("@/views/admin/main"),
       },
       {
         path: "/webEdit",
         name: "webEdit",
-        component: () => import("../views/admin/webEdit"),
+        component: () => import("@/views/admin/webEdit"),
       },
       {
         path: "/userList",
         name: "userList",
-        component: () => import("../views/admin/userList"),
+        component: () => import("@/views/admin/userList"),
       },
       {
         path: "/postList",
         name: "postList",
-        component: () => import("../views/admin/postList"),
+        component: () => import("@/views/admin/postList"),
       },
       {
         path: "/postEdit",
         name: "postEdit",
-        component: () => import("../views/admin/postEdit"),
+        component: () => import("@/views/admin/postEdit"),
       },
       {
         path: "/sortList",
         name: "sortList",
-        component: () => import("../views/admin/sortList"),
+        component: () => import("@/views/admin/sortList"),
       },
       {
         path: "/commentList",
         name: "commentList",
-        component: () => import("../views/admin/commentList"),
+        component: () => import("@/views/admin/commentList"),
       },
       {
         path: "/treeHoleList",
         name: "treeHoleList",
-        component: () => import("../views/admin/treeHoleList"),
+        component: () => import("@/views/admin/treeHoleList"),
       },
       {
         path: "/resourceList",
         name: "resourceList",
-        component: () => import("../views/admin/resourceList"),
+        component: () => import("@/views/admin/resourceList"),
       },
       {
         path: "/loveList",
         name: "loveList",
-        component: () => import("../views/admin/loveList"),
+        component: () => import("@/views/admin/loveList"),
       },
       {
         path: "/resourcePathList",
         name: "resourcePathList",
-        component: () => import("../views/admin/resourcePathList"),
+        component: () => import("@/views/admin/resourcePathList"),
       },
     ],
   },
@@ -238,13 +238,13 @@ const routes = [
   {
     path: "/verify",
     name: "verify",
-    component: () => import("../views/admin/verify"),
+    component: () => import("@/views/admin/verify"),
   },
   // 404
   {
     path: "/404",
     name: "404",
-    component: () => import("../views/404/index.vue"),
+    component: () => import("@/views/404/index.vue"),
   },
   { path: "*", redirect: "/404", hidden: true },
 ];

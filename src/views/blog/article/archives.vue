@@ -60,7 +60,7 @@ export default {
     return {
       pagination: {
         current: 1,
-        size: 12,
+        size: 10,
         total: 0,
         searchKey: '',
       },
@@ -100,12 +100,12 @@ export default {
 <style scoped>
 .timeline-title.el-timeline-item {
   height: 100px;
-  cursor: default;
 }
 
 .timeline-title.el-timeline-item ::v-deep.el-timeline-item__wrapper {
   top: -2px;
   font-size: 22px;
+  cursor: default;
 }
 
 /* ::v-deep.el-timeline-item .el-timeline-item__timestamp.is-bottom {
@@ -188,7 +188,7 @@ export default {
   transition: all .3s;
 }
 
-.aside-post-title:hover {
+.aside-post-main:hover .aside-post-title {
   transform: translateX(10px);
   color: var(--themeColor);
 }

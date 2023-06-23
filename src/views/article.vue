@@ -142,7 +142,7 @@
             作者：{{article.username}}
           </div>
           <div>
-            版权声明：转载请注明文章出处
+            版权声明：本文归作者所有，未经作者允许，不得转载。
           </div>
         </blockquote>
         <!-- 点赞 -->
@@ -475,7 +475,7 @@
   }
 
   .article-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px;
   }

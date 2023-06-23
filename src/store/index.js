@@ -59,7 +59,6 @@ export default new Vuex.Store({
         bgc: "#3fc8a9",
       },
     ],
-    holle: "",
     echatrsList: [],
     isDark: null,
   },
@@ -90,7 +89,10 @@ export default new Vuex.Store({
     },
     tagsTotal: (state) => {
       if (state.sortInfo !== null && state.sortInfo.length !== 0) {
-        return state.sortInfo.reduce((acc, cru) => {
+        const arr = state.sortInfo.filter((item) => {
+          return item.labels !== null;
+        });
+        return arr.reduce((acc, cru) => {
           return (cru.labels.length += acc);
         }, 0);
       } else {
@@ -138,24 +140,6 @@ export default new Vuex.Store({
     },
     loadpageView(state, pageViewTotal) {
       state.information[4].number = pageViewTotal;
-    },
-    loadHolleTime(state) {
-      const hour = new Date().getHours();
-      if (hour < 6) {
-        state.holle = "凌晨好";
-      } else if (hour < 9) {
-        state.holle = "早上好";
-      } else if (hour < 12) {
-        state.holle = "上午好";
-      } else if (hour < 14) {
-        state.holle = "中午好";
-      } else if (hour < 17) {
-        state.holle = "下午好";
-      } else if (hour < 19) {
-        state.holle = "傍晚好";
-      } else if (hour < 22) {
-        state.holle = "晚上好";
-      }
     },
     loadEchrats(state, echratsList) {
       state.echatrsList = echratsList;

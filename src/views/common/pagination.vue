@@ -1,7 +1,8 @@
 <template>
   <div class="pagination-wrap">
     <div class="myCenter">
-      <div @click="pageArticles(pagination.current - 1)" class="pagination" v-if="pagination.current != 1">
+      <div @click="pageArticles(pagination.current - 1)" class="pagination"
+        v-if="pagination.current != 1">
         上一页
       </div>
       <div @click="pageArticles(pagination.current + 1)" class="pagination"

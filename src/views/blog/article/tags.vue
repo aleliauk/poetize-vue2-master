@@ -7,8 +7,8 @@
 
     <div class="page_main my-animation-slide-bottom">
       <div class="contianer border_style" style="text-align: center;">
-        <TagsBar :allLabelList="allLabelList" />
-        <div v-if="this.allLabelList">
+        <TagsBar :allLabelList="allLabelList" v-if="!$common.isEmpty(allLabelList)" />
+        <div v-if="!$common.isEmpty(allLabelList)">
           <div v-for="(label, index) in allLabelList" :key="index" class="tags">
             <proTag :info="label.labelName + ' ' + label.countOfLabel" :color="$constant.before_color_list[index]"
               style="margin: 10px">
@@ -16,7 +16,8 @@
           </div>
         </div>
         <div v-else>
-          <Skeleton v-for="(item, index) in 20" :key="index" :width="100" :height="38" style="margin: 10px" animated />
+          <Skeleton v-for="(item, index) in allLabelList.length" :key="index" :width="100" :height="38"
+            style="margin: 10px" animated />
         </div>
       </div>
     </div>
@@ -50,7 +51,9 @@ export default {
   },
   methods: {
     mapLabel () {
-      this.allLabelList = this.$store.state.sortInfo.flatMap(item => item.labels.map(({ id, labelName, countOfLabel }) => ({ id, labelName, countOfLabel })))
+      if (!this.$common.isEmpty(this.$store.state.sortInfo) && !this.$store.state.sortInfo.flatMap(item => item.labels === null)[0]) {
+        this.allLabelList = this.$store.state.sortInfo.filter(item => item.labels !== null).flatMap(item => item.labels.map(({ id, labelName, countOfLabel }) => ({ id, labelName, countOfLabel })))
+      }
     }
   },
 }

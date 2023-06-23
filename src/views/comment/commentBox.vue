@@ -143,7 +143,6 @@
   .comment-textarea {
     border: 1px solid var(--lightGray);
     width: 100%;
-    color: var(--fontColor);
     font-size: 14px;
     padding: 15px;
     min-height: 180px;

@@ -697,7 +697,7 @@ export default {
         })
         .catch((error) => {
           this.$message({
-            message: error.message,
+            message: '暂无数据',
             type: 'error',
           })
         })

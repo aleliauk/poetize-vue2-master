@@ -7,7 +7,7 @@
         </el-avatar>
       </div>
       <div class="info">
-        <h2>{{ $store.state.holle }}，{{ $store.state.currentUser.username || $store.state.currentAdmin.username
+        <h2>{{ $common.loadHolleTime() }}，{{ $store.state.currentUser.username || $store.state.currentAdmin.username
         }}，祝你开心每一天！
         </h2>
         <p>管理员 | {{ $store.state.webInfo.webName }}</p>
@@ -28,7 +28,7 @@
         <Calendar />
       </div>
       <div class="echarts shadow-box-box border-radius">
-        <!-- <Echarts /> -->
+        <Echarts />
       </div>
     </div>
   </div>
@@ -36,11 +36,11 @@
 
 <script>
 import Calendar from './common/calendar.vue'
-// import Echarts from './common/echarts.vue'
+import Echarts from './common/echarts.vue'
 export default {
   components: {
     Calendar,
-    // Echarts
+    Echarts
   },
   data () {
     return {
@@ -67,7 +67,6 @@ export default {
     this.getComments() //留言列表
     this.getWebInfo() // 网站信息
     this.getSortInfo() // 分类
-    this.$store.commit('loadHolleTime') // holle
   },
 
   mounted () { },

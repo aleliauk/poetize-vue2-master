@@ -230,7 +230,7 @@ export default {
 
       let user = {
         account: this.account.trim(),
-        password: this.$common.encrypt(this.password.trim())
+        password: this.$common.encrypt(this.password.trim()),
       };
 
       this.$http.post(this.$constant.baseURL + "/user/login", user, false, false)
@@ -286,7 +286,7 @@ export default {
       let user = {
         username: this.username.trim(),
         code: this.code.trim(),
-        password: this.$common.encrypt(this.password.trim())
+        password: this.$common.encrypt(this.password.trim()),
       };
 
       if (this.dialogTitle === "邮箱验证码") {

@@ -318,30 +318,17 @@
 
 @keyframes ddd {
   0% {
-    top: 15px;
-  }
-
-  20% {
-    top: 20px;
-  }
-
-  40% {
-    top: 30px;
-  }
-
-  60% {
-    top: 20px;
-  }
-
-  75% {
-    top: 25px;
-  }
-
-  90% {
-    top: 20px;
-  }
-
-  100% {
-    top: 15px;
-  }
+      opacity: 1;
+      transform: translate(-50%,0px);
+    }
+  
+    30% {
+      opacity: 0.5;
+      transform: translate(-50%,20px);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate(-50%,0px);
+    }
 }

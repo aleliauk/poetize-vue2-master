@@ -307,7 +307,7 @@ export default {
   left: 50%;
   transform: translate(-50%, 0);
   z-index: 100;
-  animation: ddd 2s linear infinite;
+  animation: ddd 1.5s ease-out infinite;
 }
 
 .article-content-mask {

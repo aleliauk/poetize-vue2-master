@@ -1,5 +1,5 @@
 <template>
-  <div  style="background: var(--background)">
+  <div style="background: var(--background)">
     <!-- 两句诗 -->
     <div class="my-animation-slide-top">
       <twoPoem :isFenlei="true"></twoPoem>
@@ -7,7 +7,7 @@
 
     <div class="page_main my-animation-slide-bottom">
       <div class="contianer border_style">
-        <CetegoriesPie />
+        <CetegoriesPie v-if="!$common.isEmpty($store.state.sortInfo)" />
       </div>
     </div>
 
@@ -37,13 +37,15 @@ export default {
       this.$http
         .get(this.$constant.baseURL + '/webInfo/getSortInfo')
         .then((res) => {
-          const result = res.data.filter(item => item.countOfSort > 0).map(item => {
-            return {
-              name: item.sortName,
-              value: item.countOfSort
-            }
-          })
-          this.$store.commit('loadEchrats', result) // echarts
+          if (!this.$common.isEmpty(res.data)) {
+            const result = res.data.filter(item => item.countOfSort > 0).map(item => {
+              return {
+                name: item.sortName,
+                value: item.countOfSort
+              }
+            })
+            this.$store.commit('loadEchrats', result) // echarts
+          }
         })
         .catch((error) => {
           this.$message({

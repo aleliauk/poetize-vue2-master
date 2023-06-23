@@ -134,8 +134,14 @@ export default {
       })
     },
     pageArticles (current) {
-      const articlelist = document.getElementById('articlelist')
-      articlelist.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+      // 页面滚动
+      if (!this.$common.mobile()) {
+        const pageId = document.querySelector('.page-container-wrap')
+        window.scrollTo({
+          top: pageId.offsetTop - 60,
+          behavior: 'smooth',
+        })
+      }
       this.pagination.current = current
       this.getArticles()
     },
@@ -159,7 +165,7 @@ export default {
     navigation (selector) {
       let pageId = document.querySelector(selector)
       window.scrollTo({
-        top: pageId.offsetTop,
+        top: pageId.offsetTop - 60,
         behavior: 'smooth',
       })
     },

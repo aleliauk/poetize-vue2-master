@@ -58,7 +58,7 @@
                 </div>
                 <div class="favorite-item-info">
                   <div class="favorite-item-icon">
-                    <el-avatar :size="35" :src="item.icon">
+                    <el-avatar :size="35" :src="item.icon" v-animate="'my-animation-imgblur'">
                     </el-avatar>
                   </div>
                   <div class="favorite-item-msg">

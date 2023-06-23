@@ -4,9 +4,9 @@
     <div class="card-content1 shadow-box background-opacity card_style" v-animate="'my-animation-zoomln'">
       <div class="hoverBG"></div>
       <div style="position: relative;">
-        <el-avatar style="z-index: 11" class="user-avatar" :size="100" :src="webInfo.avatar"></el-avatar>
+        <el-avatar style="z-index: 11" class="user-avatar" :size="100" :src="$store.state.currentUser && $store.state.currentUser.avatar ? $store.state.currentUser.avatar : webInfo.avatar"></el-avatar>
         <div class="author-status-box">
-          <div class="author-status">
+          <div class="author-status" >
             <svg t="1687089422184" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
               p-id="7186" width="23" height="23">
               <path
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-      <div class="web-name">{{ webInfo.webName }}</div>
+      <div class="web-name">{{  $store.state.currentUser && $store.state.currentUser.username ? $common.loadHolleTime() + ', ' + $store.state.currentUser.username :  webInfo.webName }}</div>
       <div>HOLLE，欢迎光临 我的世界🚀</div>
       <div class="web-info">
         <div class="blog-info-box">
@@ -41,12 +41,12 @@
           <span class="blog-info-num">{{ $store.getters.articleTotal }}</span>
         </div>
         <div class="blog-info-box">
-          <span>标签</span>
-          <span class="blog-info-num">{{ $store.getters.tagsTotal }}</span>
-        </div>
-        <div class="blog-info-box">
           <span>分类</span>
           <span class="blog-info-num">{{ sortInfo.length }}</span>
+        </div>
+        <div class="blog-info-box">
+          <span>标签</span>
+          <span class="blog-info-num">{{ $store.getters.tagsTotal }}</span>
         </div>
       </div>
       <a class="collection-btn" @click="showTip()">
@@ -123,7 +123,7 @@
     </div>
 
     <!-- 公告栏 -->
-    <div class="shadow-box background-opacity card_style" v-animate="'my-animation-zoomln'">
+    <div class="shadow-box background-opacity card_style" v-animate="'my-animation-zoomln'" v-if="!$common.isEmpty($store.state.webInfo.notices)">
       <div class="card-content2-title">
         <svg t="1687455318759" class="icon card-content2-icon" viewBox="0 0 1024 1024" version="1.1"
           xmlns="http://www.w3.org/2000/svg" p-id="7484" width="25" height="25">
@@ -208,7 +208,7 @@
     </div> -->
 
     <!-- 分类 -->
-    <div class="shadow-box background-opacity wow card_style" v-animate="'my-animation-zoomln'">
+    <div class="shadow-box background-opacity wow card_style" v-animate="'my-animation-zoomln'"  v-if="!$common.isEmpty($store.state.sortInfo)">
       <div class="card-content2-title">
         <svg t="1687089923156" class="icon card-content2-icon" viewBox="0 0 1024 1024" version="1.1"
           xmlns="http://www.w3.org/2000/svg" p-id="7604" width="25" height="25">
@@ -366,7 +366,6 @@ export default {
   },
   methods: {
     toNav (url) {
-      console.log(1111);
       window.open(url, "_blank")
     },
     selectSort (sort) {
@@ -460,6 +459,7 @@ export default {
   background-color: #f8f8f8f8;
   transition: 0.4s;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .author-status-box:hover {
@@ -483,6 +483,7 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
   transition: 0.4s;
+  color: #000;
 }
 
 .author-status-box:hover .author-status span {
@@ -557,6 +558,7 @@ export default {
 
 .blog-info-icons span {
   margin: 0 10px;
+  cursor: pointer;
 }
 
 .blog-info-icons span:hover svg {

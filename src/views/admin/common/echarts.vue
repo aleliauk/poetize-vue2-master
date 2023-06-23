@@ -4,48 +4,37 @@
 
 <script>
 import * as echarts from 'echarts'
-import { mapState } from 'vuex';
 export default {
   methods: {
-    drawChart () {
+    drawChart() {
       var chartDom = document.getElementById('main')
       var myChart = echarts.init(chartDom)
       var option
 
       option = {
-        title: {
-          text: '文章分类统计图📇',
-          left: "center",
-          textStyle: {
-            color: this.isDark ? '#fff' : '#000'
-          }
-        },
         tooltip: {
           trigger: 'item',
         },
         legend: {
-          bottom: '0%',
+          top: '5%',
           left: 'center',
-          textStyle: {
-            color: this.isDark ? '#fff' : '#000'
-          }
         },
         series: [
           {
+            name: '文章阅读量',
             type: 'pie',
             radius: [50, 160],
-            center: ['50%', '50%'],
+            center: ['50%', '55%'],
             avoidLabelOverlap: false,
             itemStyle: {
               borderRadius: 10,
-              borderColor: !this.isDark ? '#fff' : '#272727',
+              borderColor: '#fff',
               borderWidth: 6,
             },
             label: {
               show: false,
               position: 'center',
               fontFamily: 'zhuziAwa1n',
-              color: this.isDark ? '#fff' : '#000'
             },
             emphasis: {
               label: {
@@ -71,24 +60,18 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      isDark: state => state.isDark,
-    }),
-    chartData () {
+    chartData() {
       return this.$store.state.echatrsList
     },
   },
 
   watch: {
-    isDark () {
-      this.drawChart()
-    },
-    chartData () {
+    chartData() {
       this.drawChart()
     },
   },
 
-  mounted () {
+  mounted() {
     this.drawChart()
   },
 }
@@ -96,6 +79,7 @@ export default {
 
 <style scoped>
 #main {
-  height: 450px;
+  width: 100%;
+  height: 100%;
 }
 </style>

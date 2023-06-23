@@ -422,20 +422,24 @@ export default {
   },
 
   /**
-   * 音频时间转换
+   * 时间格式转换
    */
-  async  formatDuration(url) {
-  const audio = new Audio(url);
-  const duration = await new Promise((resolve, reject) => {
-    audio.addEventListener('loadedmetadata', () => {
-      resolve(audio.duration);
-    });
-    audio.addEventListener('error', () => {
-      reject('error');
-    });
-  });
-  const minutes = Math.floor(duration / 60);
-  const seconds = Math.floor(duration % 60);
-  return `${minutes}:${(seconds < 10 ? '0' : '')}${seconds}`;
-}
+  loadHolleTime() {
+    const hour = new Date().getHours();
+    if (hour < 6) {
+      return "凌晨好";
+    } else if (hour < 9) {
+      return "早上好";
+    } else if (hour < 12) {
+      return "上午好";
+    } else if (hour < 14) {
+      return "中午好";
+    } else if (hour < 19) {
+      return "下午好";
+    } else if (hour < 20) {
+      return "傍晚好";
+    } else if (hour < 24) {
+      return "晚上好";
+    }
+  },
 };
